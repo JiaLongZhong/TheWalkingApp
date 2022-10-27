@@ -29,6 +29,6 @@ public class Product {
 	@Column(name="PRODUCTSTOCK")
 	private int stock;
 	
-	@Column(name="DEPTID")
-	private int deptID;
+	@Column(name="BRANCHID")
+	private int branchID;
 }

@@ -12,7 +12,9 @@ import walking.app.entities.Order;
 
 @Repository
 public interface CentralizedDataService{
-	
-	
+	//product search
+	public Iterable<Product> findAllProduct();
+	// place order and payment
+	public Message addOrder (Order o);
 	
 }
