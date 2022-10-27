@@ -1,5 +1,7 @@
 package walking.app.service;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,13 @@ import org.springframework.stereotype.Service;
 
 import walking.app.dao.ProductDao;
 import walking.app.entities.Product;
+import walking.app.dao.BranchDao;
 import walking.app.dao.CustomerDao;
+import walking.app.dao.EmployeeDao;
+import walking.app.dao.ManagerDao;
 import walking.app.dao.OrderDao;
+import walking.app.entities.Customer;
+import walking.app.entities.Employee;
 import walking.app.entities.Message;
 import walking.app.entities.Order;
 import walking.app.entities.Product;
@@ -29,6 +36,16 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	
 	@Autowired 
 	OrderDao ordDao;
+	
+	@Autowired
+	EmployeeDao empDao;
+	
+	@Autowired
+	ManagerDao manDao;
+	
+	@Autowired
+	BranchDao braDao;
+	
 
 	@Override
 	public Iterable<Product> findAllProduct() {
@@ -48,6 +65,46 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 //			m.setS("Success");
 //		finally
 	return null;}
+
+	//adding product
+	@Override
+	public Message addProduct(Product p) {
+		Message m=new Message();
+		try {
+		   proDao.save(p);
+		   logger.info("Product added succesfully");
+		   m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
+
+	@Override
+	public List<Product> findAllStockByBranch(int bid) {
+		List<Product> pList= proDao.findAllStockByBranch(bid);
+		return pList;
+	}
+
+	@Override
+	public Customer findByCustomerId(int cid) {
+		Customer c = cusDao.findByCustomerId(cid);
+		return c;
+	}
+	
+	@Override
+	public Employee findByEmployeeId(int eid) {
+		Employee e = empDao.findByEmployeeId(eid);
+		return e;
+	}
+
+	@Override
+	public Employee updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
+		Employee e = empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
+		return e;
+	}
 	
 
 	

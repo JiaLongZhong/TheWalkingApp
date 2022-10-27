@@ -31,4 +31,6 @@ public class Product {
 	
 	@Column(name="BRANCHID")
 	private int branchID;
+	
+	
 }

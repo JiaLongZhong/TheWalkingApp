@@ -16,15 +16,15 @@ public class Customer {
 	@Column(name="EMAIL")
 	private String email;
 	
-	@Column(name="PhoneNumber")
+	@Column(name="PHONENUMBER")
 	private String phoneNum;
 	
-	@Column(name="Address")
+	@Column(name="SHIPPINGADDRESS")
 	private String address;
 	
-	@Column(name="FROMOFPAYMENT")
+	@Column(name="FORMOFPAYMENT")
 	private String type;
 	
-	@Column(name="Amount")
+	@Column(name="BALANCE")
 	private double balance;
 }
