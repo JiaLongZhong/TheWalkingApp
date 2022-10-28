@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
 import walking.app.entities.Message;
+import walking.app.entities.Order;
 import walking.app.entities.Product;
 import walking.app.service.CentralizedDataService;
 
@@ -29,6 +30,14 @@ public class ControllerRS{
 		return service.findAllProduct();
 	}
 	
+	@PostMapping("/orders")
+	public Message addOrder(@RequestBody Order o) {
+		return service.addOrder(o);
+	}
+	@GetMapping("/orders/{id}")
+	public Order findByOrderID(@PathVariable int id) {
+		return service.findByOrderID(id);
+	}
 	@PostMapping("/products")
 	public Message addProduct(@RequestBody Product p) {
 		return service.addProduct(p);

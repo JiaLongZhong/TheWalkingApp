@@ -34,8 +34,8 @@ public class Order {
 	@Column(name="DUEDATE")
     private Date dueDate;
 	
-	@Column(name="NUMBEROFPRODUCT")
-	private int numOfProduct;
+	@Column(name="TOTALCOST")
+	private double totalCost;
 	
 	@Column(name="BRANCHID")
 	private int bid;

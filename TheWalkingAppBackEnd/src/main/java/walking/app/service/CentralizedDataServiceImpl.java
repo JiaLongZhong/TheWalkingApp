@@ -58,13 +58,18 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 
 	@Override
 	public Message addOrder(Order o) {
-//		Message m=new Message();
-//		try {
-//			ordDao.save(o);
-//			logger.info("Order successfully added");
-//			m.setS("Success");
-//		finally
-	return null;}
+		Message m=new Message();
+		try {
+			ordDao.save(o);
+			logger.info("Order successfully added");
+			m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
 
 	//adding product
 	@Override
@@ -104,6 +109,12 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	public Employee updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
 		Employee e = empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
 		return e;
+	}
+
+	@Override
+	public Order findByOrderID(int OrderID) {
+		Order o = ordDao.findByOrderID(OrderID);
+		return o;
 	}
 	
 

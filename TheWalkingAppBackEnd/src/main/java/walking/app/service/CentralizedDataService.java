@@ -16,8 +16,18 @@ public interface CentralizedDataService{
 	//product search
 	public Iterable<Product> findAllProduct();
 	
-	// place order and payment
+	// place order and payment. Need to check first.
 	public Message addOrder (Order o);
+	// findOrderbyID
+	public Order findByOrderID(int OrderID);
+	
+//	//remove or cancel order
+//	public Message removeOrder (Order o);
+	
+	//return order
+//	public Message returnOrder (Order o);
+	
+	//feedback: add a comment
 	
 	//Add Product (Manager function only - in process)
 	public Message addProduct(Product p);
