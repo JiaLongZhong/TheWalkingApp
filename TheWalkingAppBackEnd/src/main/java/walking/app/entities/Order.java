@@ -24,9 +24,6 @@ public class Order {
 	@Column(name="BILLINGADDRESS")
 	private String billAddr;
 	
-	@Column(name="FEEDBACK")
-	private String feedback;
-	
 	@Column(name="ORDERDATE")
 	@CreationTimestamp
     private Date orderDate;
