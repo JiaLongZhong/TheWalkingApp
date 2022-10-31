@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body { 
+    /* margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  */
+    font-family: 'Judson', serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Archivo Black', sans-serif;
+
+} 
+
+#navbar {
+    overflow: hidden;
+    background-color: hsl(242, 100%, 62%);
+  }
+  
+  /* Navbar links */
+  #navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+
+  /* Page content */
+  .content {
+    padding: 16px;
+  }
+  
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 60px;
+  }
+
+
+.logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.shoe-section {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 175px 100px;
+    position: relative;
+    left: 25%;
+}
+
+.shoes {
+    height: 200px;
+    border: 2px solid black;
+    position: relative;
+}
+
+.shoes input {
+    position: relative;
+    left: 25%;
+    width: 45%;
+    top: 20rem;
+    padding: 1rem 0;
+    margin: 0 10px 0 0px;
+    background-color: hsl(242, 100%, 62%);
+}
+
+.shoes input:hover {
+    background-color: hsl(242, 100%, 32%);
+}
+
+h2 {
+    text-transform: uppercase;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.shoes p {
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    top: 20rem;
+}
+
+/* #1EE196 */
