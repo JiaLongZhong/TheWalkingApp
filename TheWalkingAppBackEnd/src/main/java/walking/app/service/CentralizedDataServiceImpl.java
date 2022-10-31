@@ -115,17 +115,44 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return e;
 	}
 
-	@Override
-	public Employee updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
-		Employee e = empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
-		return e;
-	}
+//	@Override
+//	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
+//		Message m=new Message();
+//		try {
+//			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
+//			logger.info("Employee information updated succesfully");
+//			   m.setS("Success");
+//			}catch(Exception ex) {
+//				m.setS("Error:"+ex);
+//				logger.error("Error:"+ex);
+//				ex.printStackTrace();
+//			}
+//			return m;
+//	}
+	
 
 	@Override
 	public Order findByOrderID(int OrderID) {
 		Order o = ordDao.findByOrderID(OrderID);
 		return o;
 	}
+
+	@Override
+	public Message createCustomerProfile(Customer c) {
+		Message m=new Message();
+		try {
+		   cusDao.save(c);
+		   logger.info("Customer Profile Created succesfully");
+		   m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
+
+	
 	
 
 	

@@ -53,15 +53,20 @@ public class ControllerRS{
 		return service.findByCustomerId(id);
 	}
 	
+	@PostMapping("/customer")
+	public Message createCustomerProfile(@RequestBody Customer c) {
+		return service.createCustomerProfile(c);
+	}
+	
 	@GetMapping("/employee/{id}")
 	public Employee findByEmployeeId(@PathVariable int id) {
 		return service.findByEmployeeId(id);
 	}
 	
-	@GetMapping("/employee/")
-	public Employee updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
-		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
-	}
+//	@GetMapping("/employee/")
+//	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
+//		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
+//	}
 	
 
 

@@ -1,7 +1,9 @@
 package walking.app.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import walking.app.entities.Employee;
@@ -12,7 +14,7 @@ public interface EmployeeDao extends JpaRepository<Employee,Integer> {
 	public Employee findByEmployeeId(int emp);
 	
 	//not working in-progress
-	@Query(value="UPDATE employee SET name='"+"?1"+"', Salary=?2,WorkingDayPerMonth=?3 WHERE EmployeeID=?4", nativeQuery =true)
-	public Employee updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
+//	@Query(value="UPDATE employee SET name='"+"?0"+"', Salary=?1,WorkingDayPerMonth=?2 WHERE EmployeeID=?3", nativeQuery =true)
+//	public Employee updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
 	
 }
