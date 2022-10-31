@@ -3,6 +3,8 @@ package walking.app.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -29,8 +31,9 @@ public class Product {
 	@Column(name="PRODUCTSTOCK")
 	private int stock;
 	
-	@Column(name="BRANCHID")
-	private int branchID;
+	@ManyToOne
+	@JoinColumn(name="BRANCHID", nullable=false)
+	private Branches bid;
 	
 	
 }

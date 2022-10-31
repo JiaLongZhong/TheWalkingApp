@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import walking.app.dao.ProductDao;
 import walking.app.entities.Product;
 import walking.app.dao.BranchDao;
+import walking.app.dao.CartDao;
 import walking.app.dao.CustomerDao;
 import walking.app.dao.EmployeeDao;
+import walking.app.dao.FeedbackDao;
 import walking.app.dao.ManagerDao;
 import walking.app.dao.OrderDao;
 import walking.app.entities.Customer;
@@ -45,6 +47,14 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	
 	@Autowired
 	BranchDao braDao;
+	
+	@Autowired
+	CartDao cartDao;
+	
+	@Autowired
+	FeedbackDao fbDao;
+	
+	
 	
 
 	@Override

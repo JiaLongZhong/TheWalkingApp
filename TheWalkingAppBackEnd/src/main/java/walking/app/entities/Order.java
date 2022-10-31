@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,17 +17,9 @@ public class Order {
 	@Id @Column(name="ORDERID")
 	private int id;
 	
-	@Column(name="CUSTOMERID")
-	private int cid;
-	
-	@Column(name="SHIPPINGADDRESS")
-	private String shipaddr;
-	
-	@Column(name="BILLINGADDRESS")
-	private String billAddr;
-	
-	@Column(name="FEEDBACK")
-	private String feedback;
+	@ManyToOne
+	@JoinColumn(name="CUSTOMERID", nullable=false)
+	private Customer cid;
 	
 	@Column(name="ORDERDATE")
 	@CreationTimestamp
@@ -37,6 +31,7 @@ public class Order {
 	@Column(name="TOTALCOST")
 	private double totalCost;
 	
-	@Column(name="BRANCHID")
-	private int bid;
+	@ManyToOne
+	@JoinColumn(name="BRANCHID", nullable=false)
+	private Branches bid;
 }

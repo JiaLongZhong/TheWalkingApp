@@ -3,6 +3,8 @@ package walking.app.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -11,8 +13,9 @@ public class Manager {
 	@Id @Column(name="MANAGERID")
 	private int mid;
 	
-	@Column(name="BRANCHID")
-	private int bid;
+	@ManyToOne
+	@JoinColumn(name="BRANCHID", nullable=false)
+	private Branches bid;
 	
 	@Column(name="NAME")
 	private String name;
