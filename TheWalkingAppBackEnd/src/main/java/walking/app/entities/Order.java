@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity @Data
@@ -31,7 +33,8 @@ public class Order {
 	@Column(name="TOTALCOST")
 	private double totalCost;
 	
-	@ManyToOne
+	
+	@ManyToOne 
 	@JoinColumn(name="BRANCHID", nullable=false)
 	private Branches bid;
 }

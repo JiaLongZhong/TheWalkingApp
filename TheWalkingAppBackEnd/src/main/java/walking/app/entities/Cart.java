@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity @Data
@@ -19,7 +21,7 @@ public class Cart {
 	@Id @Column(name="CARTID")
 	private int id;
 	
-	@OneToOne
+	@OneToOne 
 	@JoinColumn(name="ORDERID",referencedColumnName="ORDERID", nullable = false)
 	private Order oid;
 	
@@ -29,6 +31,7 @@ public class Cart {
 	@Column(name="PRICETAG")
 	private int unitcost;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(name="CART_HAS_PRODUCT", 
 	joinColumns= {

@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity @Data
@@ -36,10 +38,12 @@ public class Product {
 	@Column(name="PRODUCTSTOCK")
 	private int stock;
 	
-	@ManyToOne
+	
+	@ManyToOne 
 	@JoinColumn(name="BRANCHID", nullable=false)
 	private Branches bid;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy="product", fetch = FetchType.LAZY)
 	private Set<Cart> cart;
 	
