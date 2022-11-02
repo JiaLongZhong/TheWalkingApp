@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -37,4 +38,8 @@ public class Order {
 	@ManyToOne 
 	@JoinColumn(name="BRANCHID", nullable=false)
 	private Branches bid;
+	
+	@OneToOne 
+	@JoinColumn(name="ORDERID",referencedColumnName="ORDERID", nullable = false)
+	private Cart cartid;
 }

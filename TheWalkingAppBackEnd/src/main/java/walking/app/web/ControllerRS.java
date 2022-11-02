@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
+import walking.app.entities.Feedback;
 import walking.app.entities.Message;
 import walking.app.entities.Order;
 import walking.app.entities.Product;
@@ -63,11 +64,23 @@ public class ControllerRS{
 		return service.findByEmployeeId(id);
 	}
 	
+	@PostMapping("/feedback")
+	public Message addFeedback(@RequestBody Feedback f) {
+		return service.addFeedback(f);
+	}
+	
+	@GetMapping("/feedback/{id}")
+	public Feedback findByFeedbackID(@PathVariable int id) {
+		return service.findByFeedbackID(id);
+	}
 //	@GetMapping("/employee/")
 //	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
 //		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
 //	}
 	
-
+	@GetMapping("/feedback-branch/{bid}")
+	public List<Feedback> findAllFeedbackByBranchID(@PathVariable int bid){
+		return service.findAllFeedbackByBranchID(bid);
+	}
 
 }

@@ -21,10 +21,6 @@ public class Cart {
 	@Id @Column(name="CARTID")
 	private int id;
 	
-	@OneToOne 
-	@JoinColumn(name="ORDERID",referencedColumnName="ORDERID", nullable = false)
-	private Order oid;
-	
 	@Column(name="QUANTITY")
 	private int quantity;
 	

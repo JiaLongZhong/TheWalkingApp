@@ -23,4 +23,8 @@ public class Feedback {
 	
 	@Column(name="FEEDBACKBODY")
 	private String fbDesc;
+	
+	@ManyToOne
+	@JoinColumn (name= "CUSTOMERID", nullable=false)
+	private Customer cid;
 }

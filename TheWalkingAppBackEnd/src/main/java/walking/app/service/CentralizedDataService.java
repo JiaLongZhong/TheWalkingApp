@@ -9,6 +9,7 @@ import walking.app.entities.Message;
 import walking.app.entities.Product;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
+import walking.app.entities.Feedback;
 import walking.app.entities.Order;
 
 @Repository
@@ -18,18 +19,19 @@ public interface CentralizedDataService{
 	//product search
 	public Iterable<Product> findAllProduct();
 	
-	// place order and payment. Need to check first.
+	// place order and payment. Wrong need to fix
 	public Message addOrder (Order o);
+	
 	// findOrderbyID
 	public Order findByOrderID(int OrderID);
 	
 	//remove or cancel order
-	//public Message removeOrder (Order o);
 	
 	//return order
 	//public Message returnOrder (Order o);
 	
 	//feedback: add a comment
+	public Message addFeedback (Feedback f);
 
 	
 //Manager Section
@@ -46,7 +48,7 @@ public interface CentralizedDataService{
 	public Employee findByEmployeeId(int eid);
 	
 	//update Employee profile
-	//public Message updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
+//	public Message updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
 	
 	
 	//show customer data
@@ -58,7 +60,11 @@ public interface CentralizedDataService{
 	//system that calculate total price
 		
 	//view customer feedback by branch id
+		public List<Feedback> findAllFeedbackByBranchID (int bid);
 		
+	// view customer by feedback id
+		public Feedback findByFeedbackID(int fid);
+
 //Owner Section	
 		
 		

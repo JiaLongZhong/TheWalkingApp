@@ -3,7 +3,10 @@ package walking.app.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity @Data
 public class Customer {
