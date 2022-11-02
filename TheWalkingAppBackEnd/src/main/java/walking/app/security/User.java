@@ -1,4 +1,4 @@
-package walking.app.entities;
+package walking.app.security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,17 +8,19 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
+
 @Entity @Data
-public class Branches {
-	
-	@Id 
+public class User {
+
+	@Id
+	@Column(name="USERID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="BRANCHID")
-	private int bid;
+	private int id;
 	
-	@Column(name="NAME")
-	private String name;
+	private String username;
+	private String password;
+	private String role;
+	private boolean enabled;
 	
-	@Column(name="BILLINGADDRESS")
-	private String address;
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,27 @@ import walking.app.service.CentralizedDataService;
 @RestController @RequestMapping ("/TheWalkingApp")
 
 public class ControllerRS{
+	
 	@Autowired
 	private CentralizedDataService service;
+	
+	
+	@GetMapping("/")
+	public String home() {
+		return("<h1>Welcome</h1>");
+	}
+	
+	@GetMapping("/user")
+	public String user() {
+		return("<h1>Welcome user</h1>");
+	}
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return("<h1>Welcome Admin</h1>");
+	}
+	
+	
 	
 	@GetMapping("/product")
 	public Iterable<Product> findAllProduct(){
@@ -63,10 +83,10 @@ public class ControllerRS{
 		return service.findByEmployeeId(id);
 	}
 	
-//	@GetMapping("/employee/")
-//	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
-//		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
-//	}
+	@PutMapping("/employee/")
+	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
+		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
+	}
 	
 
 

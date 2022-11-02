@@ -115,20 +115,20 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return e;
 	}
 
-//	@Override
-//	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
-//		Message m=new Message();
-//		try {
-//			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
-//			logger.info("Employee information updated succesfully");
-//			   m.setS("Success");
-//			}catch(Exception ex) {
-//				m.setS("Error:"+ex);
-//				logger.error("Error:"+ex);
-//				ex.printStackTrace();
-//			}
-//			return m;
-//	}
+	@Override
+	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
+		Message m=new Message();
+		try {
+			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
+			logger.info("Employee information updated succesfully");
+			   m.setS("Success");
+			}catch(Exception ex) {
+				m.setS("Error:"+ex);
+				logger.error("Error:"+ex);
+				ex.printStackTrace();
+			}
+			return m;
+	}
 	
 
 	@Override
@@ -150,6 +150,12 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 			ex.printStackTrace();
 		}
 		return m;
+	}
+
+	@Override
+	public Customer findAllByBranchID(int bid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

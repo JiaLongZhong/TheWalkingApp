@@ -15,11 +15,16 @@ import walking.app.entities.Order;
 public interface CentralizedDataService{
 
 //Customer Section
+	
+	//Add product to cart
+	
+	
 	//product search
 	public Iterable<Product> findAllProduct();
 	
 	// place order and payment. Need to check first.
 	public Message addOrder (Order o);
+	
 	// findOrderbyID
 	public Order findByOrderID(int OrderID);
 	
@@ -46,7 +51,7 @@ public interface CentralizedDataService{
 	public Employee findByEmployeeId(int eid);
 	
 	//update Employee profile
-	//public Message updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
+	public Message updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
 	
 	
 	//show customer data
@@ -58,7 +63,7 @@ public interface CentralizedDataService{
 	//system that calculate total price
 		
 	//view customer feedback by branch id
-		
+	public Customer findAllByBranchID(int bid);
 //Owner Section	
 		
 		

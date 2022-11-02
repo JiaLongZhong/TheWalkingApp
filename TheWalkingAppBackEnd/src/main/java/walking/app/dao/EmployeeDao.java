@@ -14,7 +14,7 @@ public interface EmployeeDao extends JpaRepository<Employee,Integer> {
 	public Employee findByEmployeeId(int emp);
 	
 	//not working in-progress
-//	@Query(value="UPDATE employee SET name='"+"?0"+"', Salary=?1,WorkingDayPerMonth=?2 WHERE EmployeeID=?3", nativeQuery =true)
-//	public Employee updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
+	@Query(value="UPDATE employee SET name=?1,Salary=?2, WorkingDayPerMonth=?3 WHERE EmployeeID=?4", nativeQuery =true)
+	public Employee updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
 	
 }
