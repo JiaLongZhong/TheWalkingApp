@@ -33,7 +33,7 @@ public class Product {
 	private String image;
 	
 	@Column(name="PRODUCTSIZE")
-	private int size;
+	private String size;
 	
 	@Column(name="PRODUCTSTOCK")
 	private int stock;
