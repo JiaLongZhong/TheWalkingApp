@@ -10,4 +10,6 @@ import walking.app.entities.Customer;
 public interface CustomerDao extends JpaRepository<Customer,Integer> {
 	@Query(value="select * from customer where customerid=?1", nativeQuery =true)
 	public Customer findByCustomerId(int cid);
+
+	
 }

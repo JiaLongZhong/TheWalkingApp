@@ -2,8 +2,6 @@ package walking.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,9 +11,7 @@ import lombok.Data;
 @Entity @Data
 public class Feedback {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="FEEDBACKID")
+	@Id @Column(name="FEEDBACKID")
 	private int id;
 	
 	@ManyToOne
@@ -27,4 +23,8 @@ public class Feedback {
 	
 	@Column(name="FEEDBACKBODY")
 	private String fbDesc;
+	
+	@ManyToOne
+	@JoinColumn (name= "CUSTOMERID", nullable=false)
+	private Customer cid;
 }

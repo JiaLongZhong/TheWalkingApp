@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
+import walking.app.entities.Feedback;
 import walking.app.entities.Message;
 import walking.app.entities.Order;
 import walking.app.entities.Product;
@@ -23,27 +23,8 @@ import walking.app.service.CentralizedDataService;
 @RestController @RequestMapping ("/TheWalkingApp")
 
 public class ControllerRS{
-	
 	@Autowired
 	private CentralizedDataService service;
-	
-	
-	@GetMapping("")
-	public String home(){
-        return "Hello World!";
-    }
-	
-	@GetMapping("/user")
-	public String user() {
-		return("<h1>Welcome user</h1>");
-	}
-	
-	@GetMapping("/admin")
-	public String admin() {
-		return("<h1>Welcome Admin</h1>");
-	}
-	
-	
 	
 	@GetMapping("/product")
 	public Iterable<Product> findAllProduct(){
@@ -83,11 +64,23 @@ public class ControllerRS{
 		return service.findByEmployeeId(id);
 	}
 	
-	@PutMapping("/employee/")
-	public Message updateEmployeeInformation(@RequestParam String name,@RequestParam double salary,@RequestParam int dateWorked,@RequestParam int eid) {
-		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
+	@PostMapping("/feedback")
+	public Message addFeedback(@RequestBody Feedback f) {
+		return service.addFeedback(f);
 	}
 	
-
+	@GetMapping("/feedback/{id}")
+	public Feedback findByFeedbackID(@PathVariable int id) {
+		return service.findByFeedbackID(id);
+	}
+//	@GetMapping("/employee/")
+//	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
+//		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
+//	}
+	
+	@GetMapping("/feedback-branch/{bid}")
+	public List<Feedback> findAllFeedbackByBranchID(@PathVariable int bid){
+		return service.findAllFeedbackByBranchID(bid);
+	}
 
 }

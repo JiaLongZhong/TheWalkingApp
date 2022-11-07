@@ -19,6 +19,7 @@ import walking.app.dao.ManagerDao;
 import walking.app.dao.OrderDao;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
+import walking.app.entities.Feedback;
 import walking.app.entities.Message;
 import walking.app.entities.Order;
 import walking.app.entities.Product;
@@ -56,7 +57,7 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	
 	
 	
-
+// product search
 	@Override
 	public Iterable<Product> findAllProduct() {
 		Sort s=Sort.by("id");
@@ -65,7 +66,8 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return plist;
 
 	}
-
+	
+//  place order and payment. 
 	@Override
 	public Message addOrder(Order o) {
 		Message m=new Message();
@@ -115,20 +117,20 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return e;
 	}
 
-	@Override
-	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
-		Message m=new Message();
-		try {
-			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
-			logger.info("Employee information updated succesfully");
-			   m.setS("Success");
-			}catch(Exception ex) {
-				m.setS("Error:"+ex);
-				logger.error("Error:"+ex);
-				ex.printStackTrace();
-			}
-			return m;
-	}
+//	@Override
+//	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
+//		Message m=new Message();
+//		try {
+//			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
+//			logger.info("Employee information updated succesfully");
+//			   m.setS("Success");
+//			}catch(Exception ex) {
+//				m.setS("Error:"+ex);
+//				logger.error("Error:"+ex);
+//				ex.printStackTrace();
+//			}
+//			return m;
+//	}
 	
 
 	@Override
@@ -152,10 +154,32 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return m;
 	}
 
+// add comment or feedback
 	@Override
-	public Customer findAllByBranchID(int bid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Message addFeedback(Feedback f) {
+		Message m=new Message();
+		try {
+		   fbDao.save(f);
+		   logger.info("Comment added succesfully");
+		   m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
+
+	@Override
+	public Feedback findByFeedbackID(int fid) {
+		Feedback f = fbDao.findByFeedbackID(fid);
+		return f;
+	}
+
+	@Override
+	public List<Feedback> findAllFeedbackByBranchID(int bid) {
+		List<Feedback> f = fbDao.findAllFeedbackByBranchID(bid);
+		return f;
 	}
 
 	
