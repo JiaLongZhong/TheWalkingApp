@@ -28,10 +28,10 @@ public class ControllerRS{
 	private CentralizedDataService service;
 	
 	
-	@GetMapping("/")
-	public String home() {
-		return("<h1>Welcome</h1>");
-	}
+	@GetMapping("")
+	public String home(){
+        return "Hello World!";
+    }
 	
 	@GetMapping("/user")
 	public String user() {
@@ -84,7 +84,7 @@ public class ControllerRS{
 	}
 	
 	@PutMapping("/employee/")
-	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
+	public Message updateEmployeeInformation(@RequestParam String name,@RequestParam double salary,@RequestParam int dateWorked,@RequestParam int eid) {
 		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
 	}
 	
