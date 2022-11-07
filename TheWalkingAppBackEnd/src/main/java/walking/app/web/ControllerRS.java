@@ -44,6 +44,7 @@ public class ControllerRS{
 		return service.addProduct(p);
 	}
 	
+	//sql issue
 	@GetMapping("/products-branch/{bid}")
 	public List<Product> findAllStockByBranch(@PathVariable int bid){
 		return service.findAllStockByBranch(bid);

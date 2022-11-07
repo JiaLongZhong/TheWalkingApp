@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,7 +37,6 @@ public class Product {
 	
 	@Column(name="PRODUCTSTOCK")
 	private int stock;
-	
 	
 	@ManyToOne 
 	@JoinColumn(name="BRANCHID", nullable=false)

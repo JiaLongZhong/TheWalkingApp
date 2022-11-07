@@ -12,5 +12,5 @@ import walking.app.entities.Product;
 public interface ProductDao extends JpaRepository<Product,Integer> {
 	
 	@Query(value="select * from product where branchid=?1", nativeQuery =true)
-	public List<Product> findAllStockByBranch(int bid);
+	public List<Product> findAllStockByBranch(Integer bid);
 }
