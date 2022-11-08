@@ -9,7 +9,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import walking.app.dao.ProductDao;
+import walking.app.dao.ReplyDao;
 import walking.app.entities.Product;
+import walking.app.entities.Reply;
 import walking.app.dao.BranchDao;
 import walking.app.dao.CartDao;
 import walking.app.dao.CustomerDao;
@@ -55,7 +57,8 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	@Autowired
 	FeedbackDao fbDao;
 	
-	
+	@Autowired 
+	ReplyDao replyDao;
 	
 // product search
 	@Override
@@ -180,6 +183,72 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	public List<Feedback> findAllFeedbackByBranchID(int bid) {
 		List<Feedback> f = fbDao.findAllFeedbackByBranchID(bid);
 		return f;
+	}
+
+	@Override
+	public List<Order> findAllOrder() {
+		List<Order> olist = ordDao.findAllOrder();
+		return olist;
+	}
+
+	@Override
+	public List<Order> findAllOrderByBranchID(int bid) {
+		List<Order> o = ordDao.findAllOrderByBranchID(bid);
+		return o;
+	}
+
+	@Override
+	public List<Order> findAllOrderByCustomerID(int bid) {
+		List<Order> o = ordDao.findAllOrderByCustomerID(bid);
+		return o;
+	}
+
+	@Override
+	public List<Product> findAllStock() {
+		List<Product> p = proDao.findAllStock();
+		return p;
+	}
+
+	@Override
+	public List<Employee> findEmployeeByBranch(int bid) {
+		List<Employee> e = empDao.findEmployeeByBranch(bid);
+		return e;
+	}
+
+	//working on it
+	@Override 
+	public Message updateSalary(double amt, int emp) {
+		Employee e = empDao.findByEmployeeId(emp);
+		Message m=new Message();
+		if(amt < 0) {
+			e = empDao.updateSalary(amt, emp);
+			logger.info("Salary added succesfully");
+			m.setS("Salary added succussfully");
+			
+		}else if(amt > 0 && e.getSalary() > amt ) {
+			e = empDao.updateSalary(amt, emp);
+			logger.info("Salary reduced succesfully");
+			m.setS("Salary reduced succussfully");
+		}else {
+			logger.info("Salary reduced succesfully");
+			m.setS("Unsuccessfull tranactions");
+		}
+		return m;
+	}
+
+	@Override
+	public Message addReplyToFeedback(Reply r) {
+		Message m=new Message();
+		try {
+			replyDao.save(r);
+			logger.info("Order successfully added");
+			m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
 	}
 
 	

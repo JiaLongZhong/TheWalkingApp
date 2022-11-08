@@ -29,4 +29,7 @@ public class Employee {
 	
 	@Column(name="WORKINGDAYPERMONTH")
 	private int dateWorked;
+	
+	@Column(name="ABSENT")
+	private int offDay;
 }

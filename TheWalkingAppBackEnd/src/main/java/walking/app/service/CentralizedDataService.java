@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import walking.app.entities.Message;
 import walking.app.entities.Product;
+import walking.app.entities.Reply;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
 import walking.app.entities.Feedback;
@@ -66,6 +67,18 @@ public interface CentralizedDataService{
 		public Feedback findByFeedbackID(int fid);
 
 //Owner Section	
+		public List<Order> findAllOrder();
 		
+		public List<Order> findAllOrderByBranchID (int bid);
+		
+		public List<Order> findAllOrderByCustomerID (int bid);
+		
+		public List<Product> findAllStock();
+		
+		public List<Employee> findEmployeeByBranch(int bid);
+		
+		public Message addReplyToFeedback(Reply r);
+		
+		public Message updateSalary(double amt, int emp);
 		
 }
