@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import walking.app.entities.Message;
 import walking.app.entities.Product;
 import walking.app.entities.Reply;
+import walking.app.entities.Cart;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
 import walking.app.entities.Feedback;
@@ -80,5 +81,8 @@ public interface CentralizedDataService{
 		public Message addReplyToFeedback(Reply r);
 		
 		public Message updateSalary(Employee emp, int id);
-	
+		
+		public Message addEmployee(Employee emp);
+		
+		public Message deleteEmployee(int id);
 }

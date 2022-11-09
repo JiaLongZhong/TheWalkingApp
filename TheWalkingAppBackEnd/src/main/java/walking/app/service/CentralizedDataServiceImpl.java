@@ -234,12 +234,6 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return m;
 	}
 
-	public Cart CartfindById(int id) {
-		//Cart c = cartDao.CartfindById(id);
-		Cart c=null;
-		return c;
-	}
-
 	@Override
 	public Message updateEmployeeInformation(int id, Employee emp) {
 		Employee e = empDao.findByEmployeeId(id);
@@ -264,6 +258,38 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 			return m;
 	}
 
+	@Override
+	public Message addEmployee(Employee emp) {
+		Message m=new Message();
+		try {
+			empDao.save(emp);
+			logger.info("Employee added successfully");
+			m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
+
+	@Override
+	public Message deleteEmployee(int id) {
+		Message m=new Message();
+		Employee e = empDao.findByEmployeeId(id);
+		try {
+			empDao.delete(e);
+			logger.info("Employee deleted successfully");
+			m.setS("Success");
+		}catch(Exception ex) {
+			m.setS("Error:"+ex);
+			logger.error("Error:"+ex);
+			ex.printStackTrace();
+		}
+		return m;
+	}
+
+	
 
 	
 }

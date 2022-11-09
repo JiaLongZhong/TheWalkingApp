@@ -4,6 +4,7 @@ package walking.app.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -119,4 +120,14 @@ public class ControllerRS{
 	public Message UpdateSalary(@PathVariable int id,@RequestBody  Employee emp){
 		return service.updateSalary(emp, id);
 	}	
+	
+	@PostMapping("/employee")
+	public Message add(@RequestBody Employee e) {
+		return service.addEmployee(e);
+	}
+	
+	@DeleteMapping("/employee/delete/{id}")
+	public Message deleteEmployee(@PathVariable int id) {
+		return service.deleteEmployee(id);
+	}
 }
