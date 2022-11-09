@@ -75,10 +75,10 @@ public class ControllerRS{
 	public Feedback findByFeedbackID(@PathVariable int id) {
 		return service.findByFeedbackID(id);
 	}
-//	@GetMapping("/employee/")
-//	public Message updateEmployeeInformation(@RequestParam(value="name")String name,@RequestParam(value="salary")double salary,@RequestParam(value="dateWorked") int dateWorked,@RequestParam(value="eid") int eid) {
-//		return service.updateEmployeeInformation(name,salary,dateWorked,eid);
-//	}
+	@PutMapping("/employee/update/{id}")
+	public Message updateEmployeeInformation(@PathVariable int id,@RequestBody  Employee emp) {
+		return service.updateEmployeeInformation(id,emp);
+	}
 	
 	@GetMapping("/feedback-branch/{bid}")
 	public List<Feedback> findAllFeedbackByBranchID(@PathVariable int bid){
@@ -115,4 +115,8 @@ public class ControllerRS{
 		return service.addReplyToFeedback(r);
 	}
 
+	@PutMapping("/employee/{id}")
+	public Message UpdateSalary(@PathVariable int id,@RequestBody  Employee emp){
+		return service.updateSalary(emp, id);
+	}	
 }

@@ -49,7 +49,7 @@ public interface CentralizedDataService{
 	public Employee findByEmployeeId(int eid);
 	
 	//update Employee profile
-//	public Message updateEmployeeInformation(String name,double salary,int dateWorked,int eid);
+	public Message updateEmployeeInformation(int id, Employee emp);
 	
 	
 	//show customer data
@@ -79,6 +79,6 @@ public interface CentralizedDataService{
 		
 		public Message addReplyToFeedback(Reply r);
 		
-		public Message updateSalary(double amt, int emp);
-		
+		public Message updateSalary(Employee emp, int id);
+	
 }

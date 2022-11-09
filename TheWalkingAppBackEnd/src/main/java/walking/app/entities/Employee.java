@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity @Data
@@ -19,7 +21,7 @@ public class Employee {
 	@ManyToOne
 	@JoinColumn(name="BRANCHID", nullable=false)
 	private Branches bid;
-	
+
 	@Column(name="SALARY")
 	private double salary;
 	

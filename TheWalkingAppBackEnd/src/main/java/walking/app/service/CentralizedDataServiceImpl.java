@@ -19,6 +19,7 @@ import walking.app.dao.EmployeeDao;
 import walking.app.dao.FeedbackDao;
 import walking.app.dao.ManagerDao;
 import walking.app.dao.OrderDao;
+import walking.app.entities.Cart;
 import walking.app.entities.Customer;
 import walking.app.entities.Employee;
 import walking.app.entities.Feedback;
@@ -120,22 +121,6 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return e;
 	}
 
-//	@Override
-//	public Message updateEmployeeInformation(String name, double salary, int dateWorked, int eid) {
-//		Message m=new Message();
-//		try {
-//			empDao.updateEmployeeInformation(name,salary,dateWorked,eid);
-//			logger.info("Employee information updated succesfully");
-//			   m.setS("Success");
-//			}catch(Exception ex) {
-//				m.setS("Error:"+ex);
-//				logger.error("Error:"+ex);
-//				ex.printStackTrace();
-//			}
-//			return m;
-//	}
-	
-
 	@Override
 	public Order findByOrderID(int OrderID) {
 		Order o = ordDao.findByOrderID(OrderID);
@@ -217,20 +202,18 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 
 	//working on it
 	@Override 
-	public Message updateSalary(double amt, int emp) {
-		Employee e = empDao.findByEmployeeId(emp);
+	public Message updateSalary(Employee emp, int id) {
+		Employee e = empDao.findByEmployeeId(id);
 		Message m=new Message();
-		if(amt < 0) {
-			e = empDao.updateSalary(amt, emp);
-			logger.info("Salary added succesfully");
-			m.setS("Salary added succussfully");
-			
-		}else if(amt > 0 && e.getSalary() > amt ) {
-			e = empDao.updateSalary(amt, emp);
-			logger.info("Salary reduced succesfully");
-			m.setS("Salary reduced succussfully");
-		}else {
-			logger.info("Salary reduced succesfully");
+		double amt = emp.getSalary();
+	
+		try {	
+			e.setSalary(e.getSalary()+amt);
+			empDao.save(e);
+			logger.info("Tranaction succesfully");
+			m.setS("Tranaction  succussfully");
+		}catch(Exception ex){
+			logger.info("Unsuccessfull tranactions");
 			m.setS("Unsuccessfull tranactions");
 		}
 		return m;
@@ -251,8 +234,36 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		return m;
 	}
 
-	
-	
+	public Cart CartfindById(int id) {
+		//Cart c = cartDao.CartfindById(id);
+		Cart c=null;
+		return c;
+	}
+
+	@Override
+	public Message updateEmployeeInformation(int id, Employee emp) {
+		Employee e = empDao.findByEmployeeId(id);
+		Message m=new Message();
+		String name = emp.getName();
+		double salary = emp.getSalary();
+		int dateWorked = emp.getDateWorked();
+		int offDay = emp.getOffDay();
+		try {
+			e.setName(name);
+			e.setSalary(salary);
+			e.setDateWorked(dateWorked);
+			e.setOffDay(offDay);
+			empDao.save(e);
+			logger.info("Employee information updated succesfully");
+			m.setS("Success");
+			}catch(Exception ex) {
+				m.setS("Error:"+ex);
+				logger.error("Error:"+ex);
+				ex.printStackTrace();
+			}
+			return m;
+	}
+
 
 	
 }
