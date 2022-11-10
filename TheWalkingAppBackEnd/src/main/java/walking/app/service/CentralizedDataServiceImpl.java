@@ -1,6 +1,7 @@
 package walking.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -312,6 +313,15 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 		Iterable<Feedback> flist=fbDao.findAll(s.ascending());
 		logger.info("Found All Feedback");
 		return flist;
+	}
+
+	@Override
+	public Optional<Product> addProductById(int id) {
+		return proDao.findById(id);
+	}
+	
+	public List<Cart> listCartItems(Customer customer){
+		return cartDao.findByCustomer(customer);
 	}
 	
 }

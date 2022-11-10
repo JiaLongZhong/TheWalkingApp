@@ -94,4 +94,8 @@ public interface CentralizedDataService{
 		
 		public Iterable<Feedback> findAllFeedback();
 		
+		public Optional<Product> addProductById(int id);
+		
+		
+		
 }

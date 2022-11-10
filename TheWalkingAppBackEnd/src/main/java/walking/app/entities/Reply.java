@@ -11,13 +11,13 @@ import lombok.Data;
 @Entity @Data
 public class Reply {
 
-	@Id @Column(name="ReplyID")
+	@Id @Column(name="REPLYID")
 	private int rid;
 	
-	@Column(name="ReplyName")
+	@Column(name="REPLYNAME")
 	private String rTitle;
 	
-	@Column(name="ReplyBody")
+	@Column(name="REPLYBODY")
 	private String rDesc;
 	
 	@ManyToOne
