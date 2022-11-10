@@ -4,6 +4,7 @@ package walking.app.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -101,7 +102,9 @@ public class ControllerRS{
 		return service.findAllOrderByCustomerID(bid);
 	}
 
+	
 	@GetMapping("/products-stock")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<Product> findAllStock(){
 		return service.findAllStock();
 	}
@@ -111,7 +114,7 @@ public class ControllerRS{
 		return service.findEmployeeByBranch(bid);
 	}
 	
-	@PostMapping("/reply")
+	@PutMapping("/reply")
 	public Message addReplyToFeedback(@RequestBody Reply r) {
 		return service.addReplyToFeedback(r);
 	}
@@ -129,5 +132,20 @@ public class ControllerRS{
 	@DeleteMapping("/employee/delete/{id}")
 	public Message deleteEmployee(@PathVariable int id) {
 		return service.deleteEmployee(id);
+	}
+	
+	@GetMapping("/employee")
+	public Iterable<Employee> findAllEmployee(){
+		return service.findAllEmployee();
+	}
+	
+	@GetMapping("/feedback")
+	public Iterable<Feedback> findAllFeedback(){
+		return service.findAllFeedback();
+	}
+	
+	@GetMapping("/feedback-customer/{cid}")
+	public List<Feedback> findFeedbackByCustomerID(@PathVariable int cid){
+		return service.findFeedbackByCustomerID(cid);
 	}
 }

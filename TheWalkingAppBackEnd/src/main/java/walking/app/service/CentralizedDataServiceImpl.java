@@ -290,6 +290,28 @@ public class CentralizedDataServiceImpl implements CentralizedDataService {
 	}
 
 	
+	@Override
+	public Iterable<Employee> findAllEmployee() {
+		Sort s=Sort.by("eid");
+		Iterable<Employee> elist=empDao.findAll(s.ascending());
+		logger.info("Found All Employee");
+		return elist;
 
+	}
+
+	@Override
+	public List<Feedback> findFeedbackByCustomerID(int fid) {
+		List<Feedback> fList= fbDao.findFeedbackByCustomerID(fid);
+		return fList;
+	}
+	
+
+	@Override
+	public Iterable<Feedback> findAllFeedback() {
+		Sort s=Sort.by("id");
+		Iterable<Feedback> flist=fbDao.findAll(s.ascending());
+		logger.info("Found All Feedback");
+		return flist;
+	}
 	
 }

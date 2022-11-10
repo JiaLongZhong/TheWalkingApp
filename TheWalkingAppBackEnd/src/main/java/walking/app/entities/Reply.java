@@ -14,10 +14,10 @@ public class Reply {
 	@Id @Column(name="ReplyID")
 	private int rid;
 	
-	@Column(name="REPLYNAME")
+	@Column(name="ReplyName")
 	private String rTitle;
 	
-	@Column(name="REPLYNBODY")
+	@Column(name="ReplyBody")
 	private String rDesc;
 	
 	@ManyToOne

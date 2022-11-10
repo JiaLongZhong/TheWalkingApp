@@ -16,4 +16,10 @@ public interface FeedbackDao extends JpaRepository<Feedback,Integer> {
 	
 	@Query(value="select * from feedback where exists(select productID from product where product.productID= feedback.productID and branchID=?1)", nativeQuery =true)
 	public List<Feedback> findAllFeedbackByBranchID(int bid);
+	
+	@Query(value="select * from feedback where customerid=?1", nativeQuery =true)
+	public List<Feedback> findFeedbackByCustomerID(int cid);
+	
+	@Query(value="select * from feedback", nativeQuery =true)
+	public Iterable<Feedback> findAllFeedback();
 }

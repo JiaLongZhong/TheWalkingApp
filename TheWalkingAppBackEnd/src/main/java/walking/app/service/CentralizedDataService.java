@@ -3,6 +3,7 @@ package walking.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import walking.app.entities.Message;
@@ -74,7 +75,10 @@ public interface CentralizedDataService{
 		
 		public List<Order> findAllOrderByCustomerID (int bid);
 		
+		@PreAuthorize("hasAuthority('ADMIN')")
 		public List<Product> findAllStock();
+		
+		public Iterable<Employee> findAllEmployee();
 		
 		public List<Employee> findEmployeeByBranch(int bid);
 		
@@ -85,4 +89,9 @@ public interface CentralizedDataService{
 		public Message addEmployee(Employee emp);
 		
 		public Message deleteEmployee(int id);
+		
+		public List<Feedback> findFeedbackByCustomerID(int cid);
+		
+		public Iterable<Feedback> findAllFeedback();
+		
 }
