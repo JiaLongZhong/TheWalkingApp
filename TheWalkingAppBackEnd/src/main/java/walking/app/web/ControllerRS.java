@@ -43,7 +43,7 @@ public class ControllerRS{
 	public Order findByOrderID(@PathVariable int id) {
 		return service.findByOrderID(id);
 	}
-	@PostMapping("/products")
+	@PostMapping("/product")
 	public Message addProduct(@RequestBody Product p) {
 		return service.addProduct(p);
 	}
