@@ -2,6 +2,8 @@ package walking.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.Data;
 
 @Entity @Data
 public class Customer {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id @Column(name="CUSTOMERID")
 	private int id;
 	
